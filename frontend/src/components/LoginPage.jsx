@@ -17,10 +17,13 @@ const LoginPage = ({ onLogin }) => {
         setError("Please fill in all fields.");
       }
       if (email && password) {
-        const response = await axios.post("http://localhost:7777/admin/login", {
-          email,
-          password,
-        });
+        const response = await axios.post(
+          `${process.env.REACT_APP_BACKEND_URL}/admin/login`,
+          {
+            email,
+            password,
+          }
+        );
 
         // Assuming your API responds with a success message or token upon successful login
         const token = response.data.token;
