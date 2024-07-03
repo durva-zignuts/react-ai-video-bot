@@ -27,14 +27,17 @@ const SpeechRecognitionProvider = ({ children }) => {
     setText(newText);
 
     try {
-      const response = await fetch("http://localhost:7777/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({ prompt: newText }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ prompt: newText }),
+        }
+      );
 
       setIsListening(false);
 
