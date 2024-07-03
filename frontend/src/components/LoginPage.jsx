@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../LoginForm.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -33,6 +35,7 @@ const LoginPage = ({ onLogin }) => {
 
         // Call onLogin to notify parent component (App.jsx) about successful login
         onLogin();
+        toast.success("Login successful!");
       }
     } catch (error) {
       // console.error("Login failed:", error.response.data);

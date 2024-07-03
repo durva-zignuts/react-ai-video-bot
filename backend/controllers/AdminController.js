@@ -57,7 +57,7 @@ const login = async (req, res) => {
     const admin = await Admin.findOne({ where: { email } });
 
     if (!admin) {
-      return res.status(401).json({ message: "Admin not exists" });
+      return res.status(401).json({ message: "Invalid Email or Password" });
     }
 
     // Compare passwords
@@ -65,7 +65,7 @@ const login = async (req, res) => {
       if (err || !result) {
         console.log("wrong auth cred", err);
         return res.status(400).json({
-          message: "Error in login credentials",
+          message: "Invalid Email or Password",
           err: "Wrong credentials",
         });
       }

@@ -7,6 +7,7 @@ import SpeechRecognitionProvider from "./hooks/useSpeechToText";
 import React, { useState, useEffect } from "react";
 import LoginPage from "./components/LoginPage";
 import LogoutButton from "./components/LogoutButton";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +33,8 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
+
       <SpeechRecognitionProvider>
         {!isLoggedIn ? (
           <LoginPage onLogin={handleLogin} />

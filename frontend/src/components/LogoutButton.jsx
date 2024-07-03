@@ -2,6 +2,8 @@
 
 import React from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LogoutButton = ({ onLogout }) => {
   const handleLogout = async () => {
@@ -12,6 +14,7 @@ const LogoutButton = ({ onLogout }) => {
       localStorage.removeItem("token");
 
       onLogout(); // Notify parent component about successful logout
+      toast.success("Logout successful!");
     } catch (error) {
       console.error("Logout failed:", error);
     }
